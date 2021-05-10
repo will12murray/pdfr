@@ -28,17 +28,25 @@ def splitter(path):
 
     print(f'Created : {output_fname}')
 
+
 def merger(file1, file2):
     """
-    This function merges one file with another.
-
-    Need to add a functionality to elect the order, and save location.
+    This function appends one file to another.
     """
     output = PdfFileMerger()
     output.append(file1)
     output.append(file2)
     output.write('Merged.pdf')
-    # Use the append function to define the page numbers to add?
+
+    # Add functionality to allow user to click a button and add another file to the merge.
+
+
+def stitcher():
+    """
+    This function will take an unspecified number of files either at a range of pages or the whole thing and split them open at a specified point and then stitch a range of, or all of another file.
+    """
+    pass
+
 
 if __name__ == "__main__":
     # This sets up the main application window.
@@ -46,29 +54,25 @@ if __name__ == "__main__":
     root.title("PDF Splitter / Merger")
 
     # Creating a content frame via a frame widget.
-    mainframe = ttk.Frame(root, padding = " 3 3 12 12")
+    mainframe = ttk.Frame(root, padding=" 3 3 12 12")
     mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
     mainframe['borderwidth'] = 2
     mainframe['relief'] = 'sunken'
     root.columnconfigure(0, weight=1)
     root.rowconfigure(0, weight=1)
 
-    ttk.Label(mainframe, text="Merge:").grid(column=2, row=1, sticky=(N,W))
+    ttk.Label(mainframe, text="Merge:").grid(column=2, row=1, sticky=(N, W))
 
     merge_file_1 = StringVar()
     merge_file_2 = StringVar()
 
     merge1_entry = ttk.Entry(mainframe, width=20, textvariable=merge_file_1)
-    merge2_entry = ttk.Entry(mainframe, width=20,textvariable=merge_file_2)
+    merge2_entry = ttk.Entry(mainframe, width=20, textvariable=merge_file_2)
 
     merge1_entry.grid(column=2, row=2, sticky=(W, E))
     merge2_entry.grid(column=2, row=3, sticky=(W, E))
 
-
-
     root.mainloop()
-
-
 
     # merger(merge_file_1, merge_file_2)
 
